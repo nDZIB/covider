@@ -1,15 +1,20 @@
 package cm.ubuea.covider.userprofile;
 
 import cm.ubuea.covider.registration.domain.MedicalRecord;
+import cm.ubuea.covider.registration.domain.Role;
 import cm.ubuea.covider.registration.domain.User;
 import cm.ubuea.covider.registration.domain.UserLocation;
 import cm.ubuea.covider.registration.repository.MedicalRecordRepository;
+import cm.ubuea.covider.registration.repository.RoleRepository;
 import cm.ubuea.covider.registration.repository.UserLocationRepository;
 import cm.ubuea.covider.registration.repository.UserRepository;
 import cm.ubuea.covider.registration.service.dto.LocationDTO;
 import cm.ubuea.covider.registration.service.dto.MedicalRecordDTO;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,12 +23,14 @@ public class UserProfileService {
     private final UserRepository userRepository;
     private final MedicalRecordRepository medicalRecordRepository;
     private final UserLocationRepository userLocationRepository;
+    private final RoleRepository roleRepository;
 
     public UserProfileService (UserRepository userRepository, MedicalRecordRepository medicalRecordRepository,
-                               UserLocationRepository userLocationRepository) {
+                               UserLocationRepository userLocationRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.medicalRecordRepository = medicalRecordRepository;
         this.userLocationRepository = userLocationRepository;
+        this.roleRepository = roleRepository;
     }
 
     public MedicalRecordDTO getUserMedicalRecords(String userIDNumber) {

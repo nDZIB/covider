@@ -60,6 +60,7 @@ dependencies {
     implementation "javax.cache:cache-api"
     implementation "org.ehcache:ehcache"
     implementation 'org.apache.commons:commons-lang3:3.10'
+
     // implementation 'org.flywaydb:flyway-core:6.4.4'
     implementation 'io.jsonwebtoken:jjwt-api:0.10.5'
     implementation "org.hibernate.validator:hibernate-validator"
@@ -70,9 +71,9 @@ dependencies {
 
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.10.5'
-    runtimeOnly 'mysql:mysql-connector-java'
+//    runtimeOnly 'mysql:mysql-connector-java'
 
-    testImplementation 'com.h2database:h2:1.4.200'
+    runtime 'com.h2database:h2:1.4.200'
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
